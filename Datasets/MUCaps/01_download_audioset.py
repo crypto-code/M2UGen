@@ -50,4 +50,5 @@ def download_ps(ytid, save_path, num_processes=None, desc=None):
 if __name__ == "__main__":
     df = pd.read_csv("../common/filtered.csv")
     print(f"Total Count: {len(df['YTID'].unique())}")
-    download_ps(df["YTID"].unique()[:20000], "./audioset_full")
+    # download_ps(df["YTID"].unique()[:20000], "./audioset_full")
+    download_ps(df["YTID"].unique()[20000:], "./audioset_full")

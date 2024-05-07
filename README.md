@@ -1,46 +1,50 @@
 <p>
   <h1>
     <img src="./assets/logo.png" height=120px align="right"/>
-    M<sup>2</sup>UGen: Multi-modal Music Understanding and Generation with the Power of Large Language Models
+    MuMu-LLaMA: Multi-modal Music Understanding and Generation via Large Language Models
   </h1>
 </p>
 
-[![PWC](https://img.shields.io/badge/%F0%9F%93%8E%20arXiv-Paper-red)](https://arxiv.org/abs/2311.11255)
+<!-- [![PWC](https://img.shields.io/badge/%F0%9F%93%8E%20arXiv-Paper-red)](https://arxiv.org/abs/2311.11255)
 [![PWC](https://img.shields.io/badge/%F0%9F%8C%8E%20Website-Official%20Page-blue)](https://crypto-code.github.io/M2UGen-Demo/)
-[![PWC](https://img.shields.io/badge/HuggingFace-Demo-Green)](https://huggingface.co/spaces/M2UGen/M2UGen-Demo)
+[![PWC](https://img.shields.io/badge/HuggingFace-Demo-Green)](https://huggingface.co/spaces/M2UGen/M2UGen-Demo) -->
 
-This is the official repository for *[M<sup>2</sup>UGen: Multi-modal Music Understanding and Generation with the Power of Large Language Models](https://arxiv.org/abs/2308.11276)*.
+This is the official repository for _MuMu-LLaMA: Multi-modal Music Understanding and Generation via Large Language Models_.
 
 ## 🚀 Introduction
 
-The M<sup>2</sup>UGen model is a Music Understanding and Generation model that is capable of Music Question Answering and also Music Generation from texts, images, videos and audios, as well as Music Editing. The model utilizes encoders such as MERT for music understanding, ViT for image understanding and ViViT for video understanding and the MusicGen/AudioLDM2 model as the music generation model (music decoder), coupled with adapters and the LLaMA 2 model to make the model possible for multiple abilities. The model architecture is given in [**_m2ugen.py_**](./M2UGen/llama/m2ugen.py). 
+The MuMu-LLaMA model is a Music Understanding and Generation model that is capable of Music Question Answering and also Music Generation from texts, images, videos and audios, as well as Music Editing. The model utilizes encoders such as MERT for music understanding, ViT for image understanding and ViViT for video understanding and the MusicGen/AudioLDM2 model as the music generation model (music decoder), coupled with adapters and the LLaMA 2 model to make the model possible for multiple abilities. The model architecture is given in [**_mumu_llama.py_**](./llama/mumu_llama.py).
 
 <p align="center">
-  <img src="./assets/M2UGen.png">
+  <img src="./assets/MuMu-LlaMA.png">
 </p>
 
-To train our model, we generate datasets using a music captioning and question answering model, i.e. the [MU-LLaMA](https://github.com/crypto-code/MU-LLaMA) model. The dataset generation methods are given in the [Datasets](./Datasets) folder. 
+To train our model, we generate datasets using a music captioning and question answering model, i.e. the [MU-LLaMA](https://github.com/crypto-code/MU-LLaMA) model. The dataset generation methods are given in the [Datasets](./Datasets) folder.
 
-## 🤗 HuggingFace Demo
+<!-- ## 🤗 HuggingFace Demo
 
-We have provided a HuggingFace Space to see our model in action: [M2UGen/M2UGen-Demo](https://huggingface.co/spaces/M2UGen/M2UGen-Demo).
+We have provided a HuggingFace Space to see our model in action: [M2UGen/M2UGen-Demo](https://huggingface.co/spaces/M2UGen/M2UGen-Demo). -->
 
 ## 🤖 Model Setup
 
 We use Python 3.9.17 for this project and the library requirements are given in requirements.txt. Create a conda environment using
+
 ```
 conda create --name <env> --file requirements.txt
 ```
+
 Ensure that the NVIDIA Driver is version 12 or above to be compatible with PyTorch 2.1.0.
 
-For the working of our model, Facebook's LLaMA-2 model weights are required, details on obtaining these weights are given on [HuggingFace](https://huggingface.co/docs/transformers/main/model_doc/llama). 
+For the working of our model, Facebook's LLaMA-2 model weights are required, details on obtaining these weights are given on [HuggingFace](https://huggingface.co/docs/transformers/main/model_doc/llama).
 
 The trained checkpoints for our model is available here:
-- [M<sup>2</sup>UGen with MusicGen Small](https://huggingface.co/M2UGen/M2UGen-MusicGen-small)
-- [M<sup>2</sup>UGen with MusicGen Medium](https://huggingface.co/M2UGen/M2UGen-MusicGen-medium)
-- [M<sup>2</sup>UGen with AudioLDM2](https://huggingface.co/M2UGen/M2UGen-AudioLDM2)
+
+- [MuMu-LLaMA with MusicGen Small](https://huggingface.co/M2UGen/M2UGen-MusicGen-small)
+- [MuMu-LLaMA with MusicGen Medium](https://huggingface.co/M2UGen/M2UGen-MusicGen-medium)
+- [MuMu-LLaMA with AudioLDM2](https://huggingface.co/M2UGen/M2UGen-AudioLDM2)
 
 The needed pretrained multi-modal encoder and music decoder models can be found here:
+
 - [MERT](https://huggingface.co/m-a-p/MERT-v1-330M)
 - [ViT](https://huggingface.co/google/vit-base-patch16-224-in21k)
 - [ViViT](https://huggingface.co/google/vivit-b-16x2-kinetics400)
@@ -48,10 +52,11 @@ The needed pretrained multi-modal encoder and music decoder models can be found 
 - [AudioLDM 2](https://huggingface.co/cvssp/audioldm2-music)
 
 The directory of the checkpoints folder can be organized as follows:
+
 ```
 .
 ├── ...
-├── M2UGen                
+├── MuMu-LLaMA
 │   ├── ckpts
 │   │   │── LLaMA
 │   │   │   │── 7B
@@ -61,9 +66,9 @@ The directory of the checkpoints folder can be organized as follows:
 │   │   │   │── llama.sh
 │   │   │   │── tokenizer.model
 │   │   │   │── tokenizer_checklist.chk
-│   │   │── M2UGen-MusicGen
+│   │   │── MuMu-LLaMA-MusicGen
 │   │   │   │── checkpoint.pth
-│   │   │── M2UGen-AudioLDM2
+│   │   │── MuMu-LLaMA-AudioLDM2
 │   │   │   │── checkpoint.pth
 │   │   │── knn.index
 └── ...
@@ -72,13 +77,15 @@ The directory of the checkpoints folder can be organized as follows:
 Once downloaded, the Gradio demo can be run using these checkpoints.
 
 For model with MusicGen
+
 ```
-python gradio_app.py --model ./ckpts/M2UGen-MusicGen/checkpoint.pth --llama_dir ./ckpts/LLaMA-2 --music_decoder musicgen
+python gradio_app.py --model ./ckpts/MuMu-LLaMA-MusicGen/checkpoint.pth --llama_dir ./ckpts/LLaMA-2 --music_decoder musicgen
 ```
 
 For model with AudioLDM2
+
 ```
-python gradio_app.py --model ./ckpts/M2UGen-AudioLDM2/checkpoint.pth  --llama_dir ./ckpts/LLaMA-2 --music_decoder audioldm2  --music_decoder_path cvssp/audioldm2
+python gradio_app.py --model ./ckpts/MuMu-LLaMA-AudioLDM2/checkpoint.pth  --llama_dir ./ckpts/LLaMA-2 --music_decoder audioldm2  --music_decoder_path cvssp/audioldm2
 ```
 
 ## 🗄️ Dataset Generation
@@ -86,24 +93,25 @@ python gradio_app.py --model ./ckpts/M2UGen-AudioLDM2/checkpoint.pth  --llama_di
 We use the [MU-LLaMA](https://github.com/crypto-code/MU-LLaMA) and [MPT-7B](https://huggingface.co/mosaicml/mpt-7b-chat) models to generate the MUCaps, MUEdit, MUImge and MUVideo datasets. For each of the datasets, run the scripts in the folder [Datasets](./Datasets) in its numbered order to generate the datasets.
 
 The datasets are also available for download here:
+
 - [MUCaps](https://huggingface.co/datasets/M2UGen/MUCaps)
 - [MUEdit](https://huggingface.co/datasets/M2UGen/MUEdit)
 - [MUImage](https://huggingface.co/datasets/M2UGen/MUImage)
 - [MUVideo](https://huggingface.co/datasets/M2UGen/MUVideo)
 
-Apart from the generated datasets, M2UGen also utilizes the COCO and Alpaca datasets. 
+Apart from the generated datasets, MuMu-LLaMA also utilizes the COCO and Alpaca datasets.
 For the COCO dataset, download the 2014 train dataset from [here](https://cocodataset.org/#download) and place the files in the COCO folder under Datasets.
 The Alpaca dataset file is already provided under [Datasets/Alpaca](./Datasets/Alpaca).
 
 ## 🔧 Model Training
 
-To train the M<sup>2</sup>UGen model, run the [**_train_musicgen.sh_**](./M2UGen/train_musicgen.sh) or [**_train_audioldm2.sh_**](./M2UGen/train_audioldm2.sh) script. The scripts are designed to train the model for all three stages with [MusicGen](https://huggingface.co/docs/transformers/model_doc/musicgen) and [AudioLDM2](https://huggingface.co/docs/diffusers/main/en/api/pipelines/audioldm2) music decoders respectively.
+To train the MuMu-LLaMA model, run the [**_train_musicgen.sh_**](./MuMu-LLaMA/train_musicgen.sh) or [**_train_audioldm2.sh_**](./MuMu-LLaMA/train_audioldm2.sh) script. The scripts are designed to train the model for all three stages with [MusicGen](https://huggingface.co/docs/transformers/model_doc/musicgen) and [AudioLDM2](https://huggingface.co/docs/diffusers/main/en/api/pipelines/audioldm2) music decoders respectively.
 
-The main model architecture is given in [**_m2ugen.py_**](./M2UGen/llama/m2ugen.py) and the modified MusicGen and AudioLDM2 architectures are present within the [**_musicgen_**](./M2UGen/llama/musicgen/) and [**_audioldm2_**](./M2UGen/llama/audioldm2/) folders respectively. The [**_data_**](./M2UGen/data/) folder contains the python files to handle loading the dataset. The [**_dataset.py_**](./M2UGen/data/dataset.py) file will show the use of different datasets based on the training stage. The code for the training epochs are present in [**_engine_train.py_**](./M2UGen/engine_train.py).
+The main model architecture is given in [**_mumu_llama.py_**](./MuMu-LLaMA/llama/mumu_llama.py) and the modified MusicGen and AudioLDM2 architectures are present within the [**_musicgen_**](./MuMu-LLaMA/llama/musicgen/) and [**_audioldm2_**](./MuMu-LLaMA/llama/audioldm2/) folders respectively. The [**_data_**](./MuMu-LLaMA/data/) folder contains the python files to handle loading the dataset. The [**_dataset.py_**](./MuMu-LLaMA/data/dataset.py) file will show the use of different datasets based on the training stage. The code for the training epochs are present in [**_engine_train.py_**](./MuMu-LLaMA/engine_train.py).
 
 ## 🔨 Model Testing and Evaluation
 
-To test the M<sup>2</sup>UGen model, run [**_gradio_app.py_**](./M2UGen/gradio_app.py).
+To test the MuMu-LLaMA model, run [**_gradio_app.py_**](./MuMu-LLaMA/gradio_app.py).
 
 ```
 usage: gradio_app.py [-h] [--model MODEL] [--llama_type LLAMA_TYPE] [--llama_dir LLAMA_DIR]
@@ -112,7 +120,7 @@ usage: gradio_app.py [-h] [--model MODEL] [--llama_type LLAMA_TYPE] [--llama_dir
 
 optional arguments:
   -h, --help            show this help message and exit
-  --model MODEL         Name of or path to M2UGen pretrained checkpoint
+  --model MODEL         Name of or path to MuMu-LLaMA pretrained checkpoint
   --llama_type LLAMA_TYPE
                         Type of llama original weight
   --llama_dir LLAMA_DIR
@@ -127,7 +135,7 @@ optional arguments:
                         Decoder to use musicgen/audioldm2
 ```
 
-To evaluate the M<sup>2</sup>UGen model and other compared models in our paper, please refer to [**_Evaluation_**](./Evaluation) folder.
+To evaluate the MuMu-LLaMA model and other compared models in our paper, please refer to [**_Evaluation_**](./Evaluation) folder.
 
 ## 🧰 System Hardware requirements
 
@@ -136,11 +144,13 @@ For training, stage 1 and 2 use a single 32GB V100 GPU while stage 3 uses 2 32GB
 ## 🫡 Acknowledgements
 
 This code contains elements from the following repo:
+
 - [crypto-code/MU-LLaMA](https://github.com/crypto-code/MU-LLaMA)
 
-
 ## ✨ Cite our work
-If you find this repo useful, please consider citing: 
+
+If you find this repo useful, please consider citing:
+
 ```bibtex
 @article{hussain2023m,
   title={{M$^{2}$UGen: Multi-modal Music Understanding and Generation with the Power of Large Language Models}},
