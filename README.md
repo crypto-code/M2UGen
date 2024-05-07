@@ -16,7 +16,7 @@ This is the official repository for _MuMu-LLaMA: Multi-modal Music Understanding
 The MuMu-LLaMA model is a Music Understanding and Generation model that is capable of Music Question Answering and also Music Generation from texts, images, videos and audios, as well as Music Editing. The model utilizes encoders such as MERT for music understanding, ViT for image understanding and ViViT for video understanding and the MusicGen/AudioLDM2 model as the music generation model (music decoder), coupled with adapters and the LLaMA 2 model to make the model possible for multiple abilities. The model architecture is given in [**_mumu_llama.py_**](./llama/mumu_llama.py).
 
 <p align="center">
-  <img src="./assets/MuMu-LlaMA.png">
+  <img src="./assets/MuMu-LLaMA.png">
 </p>
 
 To train our model, we generate datasets using a music captioning and question answering model, i.e. the [MU-LLaMA](https://github.com/crypto-code/MU-LLaMA) model. The dataset generation methods are given in the [Datasets](./Datasets) folder.
