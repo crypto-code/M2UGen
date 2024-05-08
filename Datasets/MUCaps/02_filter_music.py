@@ -6,6 +6,8 @@ import numpy as np
 from tqdm.auto import tqdm
 import json
 import os
+import warnings
+warnings.filterwarnings("ignore")
 
 SAMPLING_RATE = 16000
 
@@ -13,10 +15,11 @@ fileset = [str(x) for x in Path("./audioset_full").glob("*.mp3")]
 
 print("Loading Model...")
 
-model, utils = torch.hub.load(repo_or_dir='snakers4/silero-vad',
-                              model='silero_vad',
-                              force_reload=True)
-device = torch.device('cuda:0')
+model_path = '/home/whatx/.cache/torch/hub/snakers4_silero-vad_master'
+model, utils = torch.hub.load(repo_or_dir=model_path,
+                              model='silero_vad', source='local')# ,
+                            #   force_reload=True)
+device = torch.device('cuda')
 model.to(device)
 
 (get_speech_timestamps,
